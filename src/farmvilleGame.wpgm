@@ -1,0 +1,43 @@
+import wollok.game.*
+import especies.*
+import farmville.*
+
+
+program farmville {
+//	CONFIG	
+	game.title("farmville")
+	game.height(10)
+	game.width(10)
+	game.ground("ground.png")
+//	VISUALES
+//
+
+/////
+	game.addVisual(hector)
+	
+	keyboard.up().onPressDo{ hector.move(hector.position().up(1)) }
+	keyboard.down().onPressDo{ hector.move(hector.position().down(1)) }
+	keyboard.left().onPressDo{ hector.move(hector.position().left(1)) }
+	keyboard.right().onPressDo{ hector.move(hector.position().right(1)) }
+
+
+	/////Sembrar especies
+	keyboard.t().onPressDo{hector.sembrar(new Trigo())}
+	keyboard.m().onPressDo{hector.sembrar(new Maiz())}
+	keyboard.o().onPressDo{hector.sembrar(new Tomaco() )}
+	
+	///Cosechar
+	keyboard.c().onPressDo{hector.cosechar()}
+	
+	
+	///Vender
+	keyboard.v().onPressDo{hector.vender()}
+	
+	
+	//// Boton de regar
+	keyboard.r().onPressDo{hector.regar()}
+	
+	
+///START
+	game.start()	
+}
